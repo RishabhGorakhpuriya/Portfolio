@@ -5,41 +5,46 @@ import { FaGithub } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 import { FaHackerrank } from "react-icons/fa6";
 
+const list = [{ name: "Home", link: "#" },
+{ name: "About", link: "#about" },
+{ name: "Experience", link: "#experience" },
+{ name: "Project", link: "#projects" },
+{ name: "Contact", link: "#contact" }]
+
+const socialLinks = [
+    {
+        href: "https://www.linkedin.com/in/rishabh-gorakhpuriya-46bb57218/",
+        icon: <FaLinkedin />,
+    },
+    {
+        href: "https://github.com/RishabhGorakhpuriya",
+        icon: <FaGithub />,
+    },
+    {
+        href: "https://leetcode.com/u/RishabhGorakhpuriya/",
+        icon: <SiLeetcode />,
+    },
+    {
+        href: "https://drive.google.com/file/d/1gFT5LDRPu1jUn480cNgTIV1kNGSJfcij/view?usp=sharing",
+        icon: <FaHackerrank />,
+    },
+];
 const Footer = () => {
     return (
         <footer>
             <ul className="permalinks">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#about">About</a>
-                </li>
-                <li>
-                    <a href="#experience">Experience</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Project</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
+                {list.map((data, index) => (
+                    <li key={index}>
+                        <a href={data.link}>{data.name}</a>
+                    </li>
+                ))}
             </ul>
             <div className="footer__social">
-                <a href="https://www.linkedin.com/in/rishabh-gorakhpuriya-46bb57218/" target="_blank">
-                    <FaLinkedin />
-                </a>
-                <a href="https://github.com/RishabhGorakhpuriya" target="_blank">
-                    <FaGithub />
-                </a>
-                <a href="https://leetcode.com/u/RishabhGorakhpuriya/" target="_blank">
-                    <SiLeetcode />
-                </a>
-                <a href="https://drive.google.com/file/d/1gFT5LDRPu1jUn480cNgTIV1kNGSJfcij/view?usp=sharing" target="_blank">
-                    <FaHackerrank />
-                </a>
+                {socialLinks.map((link, index) => (
+                    <a key={index} href={link.href} target="_blank" rel="noopener noreferrer">
+                        {link.icon}
+                    </a>
+                ))}
             </div>
         </footer>
     )

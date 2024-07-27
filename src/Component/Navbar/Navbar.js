@@ -9,43 +9,26 @@ import "./Nav.css";
 const Nav = () => {
   const [active, setActive] = useState("#");
 
+  const navLinks = [
+    { href: "#", icon: <AiOutlineHome /> },
+    { href: "#about", icon: <AiOutlineUser /> },
+    { href: "#experience", icon: <BiBook /> },
+    { href: "#projects", icon: <RiServiceLine /> },
+    { href: "#contact", icon: <BiMessageSquareDetail /> },
+  ];
+
   return (
     <nav>
-      <a
-        onClick={() => setActive("#")}
-        className={active === "#" ? "active" : ""}
-        href="#"
-      >
-        <AiOutlineHome />
-      </a>
-      <a
-        onClick={() => setActive("#about")}
-        className={active === "#about" ? "active" : ""}
-        href="#about"
-      >
-        <AiOutlineUser />
-      </a>
-      <a
-        onClick={() => setActive("#experience")}
-        className={active === "#experience" ? "active" : ""}
-        href="#experience"
-      >
-        <BiBook />
-      </a>
-      <a
-        onClick={() => setActive("#projects")}
-        className={active === "#projects" ? "active" : ""}
-        href="#projects"
-      >
-        <RiServiceLine />
-      </a>
-      <a
-        onClick={() => setActive("#contact")}
-        className={active === "#contact" ? "active" : ""}
-        href="#contact"
-      >
-        <BiMessageSquareDetail />
-      </a>
+      {navLinks.map((link, index) => (
+        <a
+          key={index}
+          onClick={() => setActive(link.href)}
+          className={active === link.href ? "active" : ""}
+          href={link.href}
+        >
+          {link.icon}
+        </a>
+      ))}
     </nav>
   );
 };
